@@ -17,9 +17,15 @@ configurations {
 repositories {
     mavenCentral()
 }
+ext {
+    set('vaadinVersion', "23.2.6")
+}
 
 dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
     compileOnly 'org.projectlombok:lombok'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     annotationProcessor 'org.projectlombok:lombok'
@@ -27,8 +33,20 @@ dependencies {
 
     implementation group: 'io.springfox', name: 'springfox-swagger-ui', version: '3.0.0'
     implementation group: 'io.springfox', name: 'springfox-swagger2', version: '3.0.0'
+//    implementation 'com.vaadin:vaadin-spring-boot-starter'
+//    implementation group: 'com.vaadin', name: 'vaadin-server', version: '8.17.0'
+//    compileOnly group: 'com.vaadin', name: 'vaadin-client', version: '8.17.0'
+    implementation group: 'com.vaadin', name: 'vaadin-core', version: '23.2.6'
+
+
+    runtimeOnly('mysql:mysql-connector-java')
+    runtimeOnly('com.h2database:h2')
+    testImplementation group: 'com.h2database', name: 'h2', version: '2.1.214'
+    implementation group: 'org.springframework.data', name: 'spring-data-jpa', version: '2.7.5'
 
     implementation 'org.springdoc:springdoc-openapi-ui:1.6.12'
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
 tasks.named('test') {
